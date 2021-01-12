@@ -1,0 +1,22 @@
+.middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#ot {
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: aliceblue;
+    padding: .3rem;
+    font-size: large;
+}

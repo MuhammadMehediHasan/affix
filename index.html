@@ -14,14 +14,31 @@
     <div class="container middle">
 
         <div>
-            <h1 id="ot" class="display-4" >Result will print here..</h1>
+            <h1 id="ot" class="display-4 b-m" >Result will print here..</h1>
         </div>
         
+
         <div class="input-group">
+            <span class="input-group-text ">
+                Enter A word
+            </span>
             
-            <input type="text" id="in" class="form-control" placeholder="Enter A Word..">
-            <button id="run" class="btn btn-primary">Get Affix</button>
+            <input type="text" id="in" class="form-control" placeholder="Type Something Here...">
         </div>
+        <div class="input-group mb-3 u-m">
+          <select name="affixes" id="affixOption" class="form-select bg-light" required>
+            <option value="" selected>Choose Affix Type...</option>
+            <option value="suffix">Suffix</option>
+            <option value="prefix">Prefix</option>
+          </select>
+          <div class="input-group-text">
+            Auto Clear <input class="form-check-input l-m" type="checkbox" id="clear" > 
+          </div>
+          
+          
+        </div>
+        
+        <button id="run" class="btn btn-primary form-control u-m">Get Affix</button>
 
         <div class="footer bg-dark">Copy rights &copy; reserve from <a href="https://github.com/MuhammadMehediHasan" target="_BLANK" class="link-light">@MuhammadMehediHasan</a></div>
     </div>

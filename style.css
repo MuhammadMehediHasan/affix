@@ -7,8 +7,8 @@
 }
 
 #ot {
-    margin-bottom: 1rem;
     text-transform: capitalize;
+    text-align: center;
 }
 
 .footer {
@@ -19,4 +19,24 @@
     color: aliceblue;
     padding: .3rem;
     font-size: medium;
+}
+#in {
+    text-align: center;
+}
+.white {
+    color: white;
+}
+
+.b-m {
+    margin-bottom: 1rem;
+}
+.u-m {
+    margin-top: 1rem;
+}
+
+.l-m{
+    margin-left: .6rem;
+}
+input.white::placeholder {
+    color: white;
 }

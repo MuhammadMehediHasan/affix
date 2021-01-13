@@ -144,11 +144,11 @@ function getAffixWord(word, type = "") {
   });
   return final.toString();
 }
-
+let ot = document.getElementById("ot");
 // Dom Manipulation
 function runDom() {
   let value = document.getElementById("in").value;
-  let ot = document.getElementById("ot");
+
   let selection = document.getElementById("affixOption").value;
   let isSelectedClear = document.getElementById("clear");
   if (!value) {
@@ -171,8 +171,13 @@ function runDom() {
   }
 
   let word = getAffixWord(value, selection);
-  ot.innerHTML = word;
-  console.log(word);
+  if(word) {
+    ot.innerHTML = word;
+  } else {
+   getAffix(value);
+  }
+  
+  // console.log(word);
   if (isSelectedClear.checked) {
     document.getElementById("in").value = "";
   }
@@ -192,3 +197,47 @@ document
   .addEventListener("click", () =>
     document.getElementById("in").classList.remove("bg-danger", "white")
   );
+
+  // fetch('https://api.dictionaryapi.dev/api/v2/entries/en/hello')
+// .then(data => data.json())
+// .then(wordsInfo => console.log(wordsInfo))
+
+
+function getPOS(word = "") {
+  if (!word) return;
+  return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+    .then((body) => body.json())
+    .then((data) => {
+      let meanings = data[0].meanings;
+      let str = "";
+      meanings.forEach((e) => {
+        str += e.partOfSpeech + ", ";
+      });
+      return str;
+    })
+    .catch((err) => err);
+}
+
+function reg(value, reg) {
+  let r = new RegExp(reg, "gi");
+  return r.test(value);
+}
+
+function getAffix(word = "") {
+  if (!word) return;
+
+  getPOS(word).then((val) => {
+    let is = reg.bind(null, val);
+    if (is("noun")) {
+      ot.innerHTML = word + 'able';
+    } else if(is('adjective')){
+      ot.innerHTML = 'be' + word;
+    } else if('adverb') {
+      ot.innerHTML = word + 'est'
+    } else if( is('verb')) {
+      ot.innerHTML = word + 'er';
+    }
+  });
+}
+
+
